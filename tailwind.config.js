@@ -1,4 +1,5 @@
 /** @type {import('tailwindcss').Config} */
+//lol
 export default {
   content: [
     "./index.html",

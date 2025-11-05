@@ -1,0 +1,11 @@
+{
+	"name": "Tintly",
+	"short_name": "Tintly",
+	"start_url": "/",
+	"display": "standalone",
+	"background_color": "#0D0F11",
+	"theme_color": "#0D0F11",
+	"icons": []
+}
+
+

@@ -2,7 +2,7 @@ import React from "react";
 import { Toast, ToastProps } from "./Toast";
 
 interface ToastContainerProps {
-  toasts: ToastProps[];
+  toasts: Toast[];
   onClose: (id: string) => void;
 }
 

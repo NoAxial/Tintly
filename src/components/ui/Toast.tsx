@@ -1,8 +1,14 @@
 import React, { useEffect } from "react";
 import { X } from "lucide-react";
-import { Toast as ToastType } from "../hooks/useToast";
 
-export interface ToastProps extends ToastType {
+export interface Toast {
+  id: string;
+  type: "success" | "error" | "info";
+  message: string;
+  autoClose?: boolean;
+}
+
+export interface ToastProps extends Toast {
   onClose: (id: string) => void;
 }
 

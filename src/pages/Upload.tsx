@@ -96,7 +96,13 @@ export default function Upload(): JSX.Element {
                 </div>
             ) : null}
             <div className="mt-5 flex justify-end">
-                <Button disabled={saving || !batch.length || !category || !pattern} onClick={onSave}>{saving ? "Saving..." : `Save ${batch.length || ""} Item(s)`}</Button>
+                {saving ? (
+                    <LoadingSpinner size="small" text="Saving items..." />
+                ) : (
+                    <Button disabled={!batch.length || !category || !pattern} onClick={onSave}>
+                        Save {batch.length || ""} Item(s)
+                    </Button>
+                )}
             </div>
 		</div>
 	);

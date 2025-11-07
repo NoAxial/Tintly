@@ -49,10 +49,14 @@ export default function Upload(): JSX.Element {
                 };
                 await addItem(item);
             }
+            showSuccess(`Successfully saved ${batch.length} item(s)`);
             setBatch([]);
             setLabel("");
             setCategory("");
             setPattern("");
+        } catch (error) {
+            console.error("Failed to save items:", error);
+            showError("Failed to save items. Please try again.");
         } finally {
             setSaving(false);
         }

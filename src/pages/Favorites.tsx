@@ -6,25 +6,47 @@ import { db, type FavoriteOutfit } from "../data/db";
 
 export default function Favorites(): JSX.Element {
 	const [items, setItems] = useState<(FavoriteOutfit & { leftImg: string; rightImg: string })[]>([]);
+	const [isLoading, setIsLoading] = useState(true);
+
 	useEffect(() => {
 		(async () => {
-			const favs = await db.favorites.orderBy("createdAt").reverse().toArray();
-			const joined = await Promise.all(
-				favs.map(async (f) => {
-					const left = await db.items.get(f.leftItemId);
-					const right = await db.items.get(f.rightItemId);
-					return { ...f, leftImg: left?.imageData ?? "", rightImg: right?.imageData ?? "" };
-				})
-			);
-			setItems(joined);
+			setIsLoading(true);
+			try {
+				const favs = await db.favorites.orderBy("createdAt").reverse().toArray();
+				const joined = await Promise.all(
+					favs.map(async (f) => {
+						const left = await db.items.get(f.leftItemId);
+						const right = await db.items.get(f.rightItemId);
+						return { ...f, leftImg: left?.imageData ?? "", rightImg: right?.imageData ?? "" };
+					})
+				);
+				setItems(joined);
+			} catch (error) {
+				console.error("Failed to load favorites:", error);
+			} finally {
+				setIsLoading(false);
+			}
 		})();
 	}, []);
+
+	if (isLoading) {
+		return (
+			<div className="max-w-5xl mx-auto px-6 py-10">
+				<h2 className="text-2xl font-semibold mb-6">Favorites</h2>
+				<LoadingSpinner size="medium" text="Loading your favorite outfits..." />
+			</div>
+		);
+	}
 
 	return (
 		<div className="max-w-5xl mx-auto px-6 py-10">
 			<h2 className="text-2xl font-semibold mb-6">Favorites</h2>
 			{items.length === 0 ? (
-				<Card><span className="text-white/70 text-sm">No favorites yet.</span></Card>
+				<EmptyState
+					icon="❤️"
+					title="No favorite outfits"
+					description="Start saving outfit combinations you love by clicking the heart icon when generating outfits."
+				/>
 			) : (
 				<div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
 					{items.map((f) => (

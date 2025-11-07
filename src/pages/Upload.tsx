@@ -14,6 +14,7 @@ import { v4 as uuidv4 } from "uuid";
 export default function Upload(): JSX.Element {
     const { extract } = useColorAnalysis();
     const { addItem } = useWardrobe();
+    const { showSuccess, showError } = useToast();
     const [batch, setBatch] = useState<{ file: File; previewUrl: string; label: string }[]>([]);
 	const [label, setLabel] = useState("");
 	const [category, setCategory] = useState<ClothingCategory | "">("");

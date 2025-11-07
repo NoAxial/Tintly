@@ -9,6 +9,8 @@ export interface ToastProps {
   autoClose?: boolean;
 }
 
+export interface Toast extends Omit<ToastProps, 'onClose'> {}
+
 export function Toast({ id, type, message, onClose, autoClose = true }: ToastProps) {
   useEffect(() => {
     if (autoClose) {

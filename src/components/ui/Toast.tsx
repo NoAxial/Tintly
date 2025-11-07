@@ -1,15 +1,10 @@
 import React, { useEffect } from "react";
 import { X } from "lucide-react";
+import { Toast as ToastType } from "../hooks/useToast";
 
-export interface ToastProps {
-  id: string;
-  type: "success" | "error" | "info";
-  message: string;
+export interface ToastProps extends ToastType {
   onClose: (id: string) => void;
-  autoClose?: boolean;
 }
-
-export interface Toast extends Omit<ToastProps, 'onClose'> {}
 
 export function Toast({ id, type, message, onClose, autoClose = true }: ToastProps) {
   useEffect(() => {

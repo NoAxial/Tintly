@@ -1,11 +1,5 @@
 import { useState, useCallback } from "react";
-
-export interface Toast {
-  id: string;
-  type: "success" | "error" | "info";
-  message: string;
-  autoClose?: boolean;
-}
+import { Toast } from "../components/ui/Toast";
 
 export function useToast() {
   const [toasts, setToasts] = useState<Toast[]>([]);

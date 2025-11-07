@@ -3,7 +3,7 @@ import { useTheme } from "../context/ThemeContext";
 import { useToast } from "../hooks/useToast";
 import { ToggleSwitch } from "../components/ui/ToggleSwitch";
 import { SettingsCard } from "../components/ui/SettingsCard";
-import { Button } from "../components/ui/Button";
+import Button from "../components/ui/Button";
 import { UserSettings, defaultSettings } from "../types/settings";
 
 export default function Settings(): JSX.Element {

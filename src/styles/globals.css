@@ -125,4 +125,107 @@ body::before {
 	animation: haloPulse 2.4s cubic-bezier(0.22, 1, 0.36, 1) infinite;
 }
 
+/* Enhanced Glass Variants */
+.glass-enhanced {
+	backdrop-filter: blur(20px) saturate(150%);
+	-webkit-backdrop-filter: blur(20px) saturate(150%);
+}
+
+.glass-subtle {
+	backdrop-filter: blur(8px) saturate(120%);
+	-webkit-backdrop-filter: blur(8px) saturate(120%);
+}
+
+/* Animation Utilities */
+.hover-lift {
+	transition: all 0.3s var(--transition-smooth);
+}
+
+.hover-lift:hover {
+	transform: translateY(-4px);
+	box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+}
+
+.glass-border-glow {
+	box-shadow: 0 0 0 1px rgba(255,255,255,0.18),
+              0 0 20px rgba(183,169,255,0.1);
+}
+
+/* Typography Enhancements */
+.text-gradient {
+	background: linear-gradient(135deg, var(--accent-1), var(--accent-2), var(--accent-3));
+	-webkit-background-clip: text;
+	background-clip: text;
+	-webkit-text-fill-color: transparent;
+}
+
+/* Focus States */
+.focus-ring {
+	outline: none;
+	transition: box-shadow 0.2s;
+}
+
+.focus-ring:focus {
+	box-shadow: 0 0 0 3px rgba(183,169,255,0.3);
+}
+
+/* Shimmer Animation for Skeleton */
+@keyframes shimmer {
+	0% {
+		background-position: -200% 0;
+	}
+	100% {
+		background-position: 200% 0;
+	}
+}
+
+.animate-shimmer {
+	animation: shimmer 1.5s infinite;
+}
+
+/* Modal Animations */
+@keyframes fadeIn {
+	from {
+		opacity: 0;
+	}
+	to {
+		opacity: 1;
+	}
+}
+
+@keyframes scaleIn {
+	from {
+		opacity: 0;
+		transform: scale(0.9) translateY(10px);
+	}
+	to {
+		opacity: 1;
+		transform: scale(1) translateY(0);
+	}
+}
+
+.animate-fade-in {
+	animation: fadeIn 0.2s ease-out;
+}
+
+.animate-scale-in {
+	animation: scaleIn 0.3s var(--transition-smooth);
+}
+
+/* Toast Animation */
+@keyframes slideInRight {
+	from {
+		opacity: 0;
+		transform: translateX(100%);
+	}
+	to {
+		opacity: 1;
+		transform: translateX(0);
+	}
+}
+
+.animate-slide-in-right {
+	animation: slideInRight 0.3s var(--transition-smooth);
+}
+
 

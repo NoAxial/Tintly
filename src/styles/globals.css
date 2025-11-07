@@ -146,14 +146,17 @@ body {
 
 .toast-success {
 	border-left: 4px solid var(--accent-secondary);
+	color: var(--accent-secondary);
 }
 
 .toast-error {
 	border-left: 4px solid var(--accent-primary);
+	color: var(--accent-primary);
 }
 
 .toast-info {
 	border-left: 4px solid var(--accent-tertiary);
+	color: var(--accent-tertiary);
 }
 
 /* Modal Styles */

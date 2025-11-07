@@ -7,6 +7,14 @@
 	--accent-1: #B7A9FF;
 	--accent-2: #86D1C8;
 	--accent-3: #FFB5A7;
+
+	/* Glass blur intensities */
+	--glass-blur-subtle: 8px;
+	--glass-blur-standard: 14px;
+	--glass-blur-enhanced: 20px;
+
+	/* Transition easing */
+	--transition-smooth: cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 html, body, #root {

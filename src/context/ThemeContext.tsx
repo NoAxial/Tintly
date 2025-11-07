@@ -25,10 +25,10 @@ interface ThemeProviderProps {
 export function ThemeProvider({ children }: ThemeProviderProps) {
   const [theme, setThemeState] = useState<Theme>(() => {
     const saved = localStorage.getItem("tintly-theme");
-    return (saved as Theme) || "dark";
+    return (saved as Theme) || "light";
   });
 
-  const [resolvedTheme, setResolvedTheme] = useState<"dark" | "light">("dark");
+  const [resolvedTheme, setResolvedTheme] = useState<"dark" | "light">("light");
 
   const setTheme = (newTheme: Theme) => {
     setThemeState(newTheme);

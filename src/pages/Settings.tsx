@@ -10,7 +10,6 @@ export default function Settings(): JSX.Element {
   const { theme, setTheme } = useTheme();
   const { showSuccess, showError } = useToast();
   const [settings, setSettings] = useState<UserSettings>(defaultSettings);
-  const [isLoading, setIsLoading] = useState(false);
 
   // Load settings from localStorage on mount
   useEffect(() => {

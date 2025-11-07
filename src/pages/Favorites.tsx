@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import Card from "../components/ui/Card";
-import EmptyState from "../components/ui/EmptyState";
+import { EmptyState } from "../components/ui/EmptyState";
 import { LoadingSpinner } from "../components/ui/LoadingSpinner";
 import { db, type FavoriteOutfit } from "../data/db";
 

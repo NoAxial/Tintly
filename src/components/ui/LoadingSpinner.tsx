@@ -1,5 +1,3 @@
-import React from "react";
-
 type LoadingSpinnerSize = "small" | "medium" | "large";
 
 interface LoadingSpinnerProps {
@@ -23,18 +21,13 @@ export function LoadingSpinner({ size = "medium", text, className = "" }: Loadin
 
   return (
     <div className={`
-      glass-liquid rounded-xl p-4 flex flex-col items-center justify-center gap-3
+      flex flex-col items-center justify-center gap-3
       ${className}
     `}>
-      <div
-        className={`
-          ${sizeStyles[size]} rounded-full border-2 border-white/20
-          border-t-[var(--accent-1)] animate-spin
-        `}
-      />
+      <div className={`spinner ${sizeStyles[size]}`} />
       {text && (
         <p className={`
-          ${textSizeStyles[size]} text-white/70 font-medium
+          ${textSizeStyles[size]} text-secondary font-medium
         `}>
           {text}
         </p>

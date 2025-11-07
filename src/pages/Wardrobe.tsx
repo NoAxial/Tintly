@@ -2,7 +2,7 @@ import React from "react";
 import Card from "../components/ui/Card";
 import Button from "../components/ui/Button";
 import ClothingItemCard from "../components/molecules/ClothingItemCard";
-import EmptyState from "../components/ui/EmptyState";
+import { EmptyState } from "../components/ui/EmptyState";
 import { useWardrobe } from "../context/WardrobeContext";
 import { useToast } from "../hooks/useToast";
 import { Link } from "react-router-dom";

@@ -3,6 +3,8 @@ import Card from "../components/ui/Card";
 import Button from "../components/ui/Button";
 import Input from "../components/ui/Input";
 import ItemUploadArea from "../components/molecules/ItemUploadArea";
+import { LoadingSpinner } from "../components/ui/LoadingSpinner";
+import { useToast } from "../hooks/useToast";
 import { useState } from "react";
 import { useColorAnalysis } from "../hooks/useColorAnalysis";
 import { useWardrobe } from "../context/WardrobeContext";
@@ -12,6 +14,7 @@ import { v4 as uuidv4 } from "uuid";
 export default function Upload(): JSX.Element {
     const { extract } = useColorAnalysis();
     const { addItem } = useWardrobe();
+    const { showSuccess, showError } = useToast();
     const [batch, setBatch] = useState<{ file: File; previewUrl: string; label: string }[]>([]);
 	const [label, setLabel] = useState("");
 	const [category, setCategory] = useState<ClothingCategory | "">("");
@@ -46,10 +49,14 @@ export default function Upload(): JSX.Element {
                 };
                 await addItem(item);
             }
+            showSuccess(`Successfully saved ${batch.length} item(s)`);
             setBatch([]);
             setLabel("");
             setCategory("");
             setPattern("");
+        } catch (error) {
+            console.error("Failed to save items:", error);
+            showError("Failed to save items. Please try again.");
         } finally {
             setSaving(false);
         }
@@ -89,7 +96,13 @@ export default function Upload(): JSX.Element {
                 </div>
             ) : null}
             <div className="mt-5 flex justify-end">
-                <Button disabled={saving || !batch.length || !category || !pattern} onClick={onSave}>{saving ? "Saving..." : `Save ${batch.length || ""} Item(s)`}</Button>
+                {saving ? (
+                    <LoadingSpinner size="small" text="Saving items..." />
+                ) : (
+                    <Button disabled={!batch.length || !category || !pattern} onClick={onSave}>
+                        Save {batch.length || ""} Item(s)
+                    </Button>
+                )}
             </div>
 		</div>
 	);

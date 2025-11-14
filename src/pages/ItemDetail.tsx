@@ -44,7 +44,16 @@ export default function ItemDetail(): JSX.Element {
 						<p className="text-white/60">Category: {item.category}</p>
 						<p className="text-white/60">Tone: {item.tone ?? "-"}</p>
 						<Input value={label} onChange={(e) => setLabel(e.target.value)} />
-						<Input value={pattern} onChange={(e) => setPattern(e.target.value)} />
+						<select
+  value={pattern}
+  onChange={(e) => setPattern(e.target.value as typeof pattern)}
+  className="select-glass rounded-lg px-3 py-2 text-sm w-full focus-ring"
+>
+  <option value="Solid">Solid</option>
+  <option value="Striped">Striped</option>
+  <option value="Graphic">Graphic</option>
+  <option value="Floral">Floral</option>
+</select>
 						<div className="pt-2 flex gap-3">
 							<Button onClick={onSave}>Update Item</Button>
 							<Button variant="ghost" onClick={onDelete}>Delete</Button>
